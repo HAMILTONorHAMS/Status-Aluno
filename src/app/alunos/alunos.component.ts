@@ -28,4 +28,13 @@ export class AlunosComponent {
       nota: 5,
     },
   ];
+  atualizaStatus({ nome, status}: { nome: string; status: string}): void{
+    this.alunos = this.alunos.map((aluno) =>
+      aluno.nome === nome ? { ...aluno, status } : aluno);
+  }
+  //Um método que pega o objeto e desestrutura ele, pegando nome  e status. Depois tipamos eles
+  //Map para poder criar um novo array alunos, executando map a cada aluno
+  // => Depois aluno.nome === nome  Verifica se o nome do aluno atual(aluno.nome) e igual ao fornecido(nome)
+  //Condicao ternaria: caso aluno.nome === nome for verdadeira - criará um novo array e atualizará o status, senao vai ser o objeto original
+  //Usando spread operator(...) copiamos todas as propriedades do aluno e irá sobreescrever o status.
 }
