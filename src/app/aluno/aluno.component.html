@@ -1,18 +1,16 @@
-<div class="class">
-  <article>
-    <strong>Nome:</strong>{{aluno?.nome}} <!--Usa interpolação para pegar informações do Input-->
-  </article>
-  <br>
-  <article>
-    <strong>Nota:</strong>{{aluno?.nota}}
-  </article>
-  <br>
-  <article *ngIf="aluno?.status != 'pendente'"> <!--Se um aluno for pedente não mostra o status-->
-    <strong>Status:</strong>{{aluno?.status}}
-  </article>
-  <div *ngIf="aluno?.status =='pendente' ">
-    <button (click)="aprovarFn()">Aprovado</button>
-    <button (click)="reprovarFn()">Reprovado</button>
-  </div>
-  <hr>
+<div>
+  <h2>Adicionar Novo Aluno</h2>
+  <form (ngSubmit)="adicionar()">
+    <label>
+      Nome:
+      <input type="text" [(ngModel)]="nome" name="nome" required />
+    </label>
+
+    <label>
+      Nota:
+      <input type="number" [(ngModel)]="nota" name="nota" required />
+    </label>
+
+    <button type="submit">Adicionar</button>
+  </form>
 </div>
