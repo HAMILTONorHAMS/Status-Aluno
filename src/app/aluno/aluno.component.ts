@@ -3,16 +3,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-aluno',
   templateUrl: './aluno.component.html',
-  styleUrls: ['./aluno.component.scss']
+  styleUrls: ['./aluno.component.scss'],
 })
 export class AlunoComponent {
-  nome =''
+  nome = '';
   nota: number | null = null;
 
   @Output() alunoAdicionado = new EventEmitter<{
     nome: string;
     nota: number;
   }>();
+
+  limparFormulario(): void {
+    this.nome = '';
+    this.nota = null;
+  }
 
   adicionar(): void {
     if (this.nome && this.nota !== null) {
@@ -21,10 +26,5 @@ export class AlunoComponent {
     } else {
       alert('Preencha todos os campos!');
     }
-  }
-
-  limparFormulario(): void{
-    this.nome = '';
-    this.nota = null;
   }
 }
