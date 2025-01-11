@@ -7,10 +7,10 @@
     <strong>Nota:</strong>{{aluno?.nota}}
   </article>
   <br>
-  <article > <!--Se um aluno for pedente não mostra o status-->
+  <article *ngIf="aluno?.status != 'pendente'"> <!--Se um aluno for pedente não mostra o status-->
     <strong>Status:</strong>{{aluno?.status}}
   </article>
-  <div >
+  <div *ngIf="aluno?.status =='pendente' ">
     <button (click)="aprovarFn()">Aprovado</button>
     <button (click)="reprovarFn()">Reprovado</button>
   </div>
