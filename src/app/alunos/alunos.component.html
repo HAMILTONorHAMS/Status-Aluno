@@ -2,7 +2,7 @@
 <app-aluno (alunoAdicionado)="adicionarAluno($event)"></app-aluno>
 
 <div>
-   <!-- Lista de alunos -->
+  <!-- Lista de alunos -->
   <table>
     <thead>
       <tr>
@@ -20,8 +20,12 @@
         <td>
           <!-- Botões apenas para status pendente -->
           <ng-container *ngIf="aluno?.status === 'pendente'">
-            <button (click)="atualizarStatus(aluno.nome, 'aprovado')">Aprovar</button>
-            <button (click)="atualizarStatus(aluno.nome, 'reprovado')">Reprovar</button>
+            <button (click)="atualizarStatus(aluno.nome, 'aprovado')">
+              Aprovar
+            </button>
+            <button (click)="atualizarStatus(aluno.nome, 'reprovado')">
+              Reprovar
+            </button>
           </ng-container>
         </td>
       </tr>
