@@ -1,2 +1,5 @@
 <h1>Classificador de Alunos</h1>
-<app-aluno></app-aluno>
+<app-aluno
+  *ngFor="let item of alunos"
+  [aluno]="item">
+</app-aluno>
