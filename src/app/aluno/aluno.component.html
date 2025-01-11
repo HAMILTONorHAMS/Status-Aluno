@@ -7,8 +7,12 @@
     <strong>Nota:</strong>{{aluno?.nota}}
   </article>
   <br>
-  <article>
+  <article > <!--Se um aluno for pedente não mostra o status-->
     <strong>Status:</strong>{{aluno?.status}}
   </article>
+  <div >
+    <button (click)="aprovarFn()">Aprovado</button>
+    <button (click)="reprovarFn()">Reprovado</button>
+  </div>
   <hr>
 </div>
