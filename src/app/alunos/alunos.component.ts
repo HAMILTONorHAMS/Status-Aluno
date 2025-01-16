@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-alunos',
   templateUrl: './alunos.component.html',
-  styleUrls: ['./alunos.component.scss']
+  styleUrls: ['./alunos.component.scss'],
 })
 export class AlunosComponent {
   alunos = [
@@ -28,13 +28,23 @@ export class AlunosComponent {
       nota: 5,
     },
   ];
-  atualizaStatus({ nome, status}: { nome: string; status: string}): void{
-    this.alunos = this.alunos.map((aluno) =>
-      aluno.nome === nome ? { ...aluno, status } : aluno);
+
+  definirStatus(nota: number): string {
+    if (nota >= 6) return 'aprovado';
+    if (nota >= 5) return 'pendente';
+    return 'reprovado';
   }
-  //Um método que pega o objeto e desestrutura ele, pegando nome  e status. Depois tipamos eles
-  //Map para poder criar um novo array alunos, executando map a cada aluno
-  // => Depois aluno.nome === nome  Verifica se o nome do aluno atual(aluno.nome) e igual ao fornecido(nome)
-  //Condicao ternaria: caso aluno.nome === nome for verdadeira - criará um novo array e atualizará o status, senao vai ser o objeto original
-  //Usando spread operator(...) copiamos todas as propriedades do aluno e irá sobreescrever o status.
+
+  adicionarAluno(novoAluno: { nome: string; nota: number }): void {
+    const status = this.definirStatus(novoAluno.nota);
+    this.alunos.push({ ...novoAluno, status });
+  }
+
+  atualizarStatus(nome: string, status: string): void {
+    // Exemplo de lógica: Atualiza o status do aluno
+    const aluno = this.alunos.find((aluno) => aluno.nome === nome);
+    if (aluno) {
+      aluno.status = status;
+    }
+  }
 }
